@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      display: flex;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .left-panel {
+      flex: 2;
+      background-color: #138fbd;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .section {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      overflow-y: auto;
+    }
+
+    .section h2 {
+      color: #138fbd;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .todo-button {
+      border: 2px solid #138fbd;
+      border-radius: 10px;
+      background-color: white;
+      padding: 12px;
+      font-style: italic;
+      font-size: 1rem;
+      color: #999;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .task-box {
+      border: 2px solid #138fbd;
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .task-box h4 {
+      font-style: italic;
+      color: #aaa;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+    }
+
+    .task-box p {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .right-panel {
+      flex: 1.2;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .notifications, .assign-task {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .notifications h2, .assign-task h2 {
+      color: #138fbd;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    .message-button {
+      background-color: #f5f5f5;
+      border: none;
+      border-bottom: 2px solid #138fbd;
+      padding: 10px;
+      font-size: 0.9rem;
+      text-align: left;
+      color: #666;
+      cursor: pointer;
+    }
+
+    .assign-task input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #138fbd;
+      border-radius: 10px;
+      font-style: italic;
+      font-size: 1rem;
+      color: #aaa;
+    }
+
+    .assign-buttons button {
+      width: 100%;
+      margin-top: 10px;
+      background-color: #138fbd;
+      border: none;
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-style: italic;
+      box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .compose-button {
+      align-self: flex-end;
+      background-color: #138fbd;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+ 
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="section" id="your_tasks">
+
+      </div>
+
+      <div class="section" id="msg_from">
+        <h2>Assigned Tasks</h2>
+      
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="notifications">
+        <h2>Notifications</h2>
+        <button class="message-button">Message from<br />Regarding the work done</button>
+        <button class="message-button">Message from<br />Regarding the work done</button>
+        <button class="message-button">Message from<br />Regarding the work done</button>
+        <button class="message-button">Message from<br />Regarding the work done</button>
+      </div>
+
+      <div class="assign-task">
+        <h2>Assign a Task</h2>
+        <input type="text" placeholder="Task Title" id="Title" />
+        <input type="text" placeholder="from" id="from" />
+        <input type="text" placeholder="to" id="to" />
+        <input type="text" placeholder="Assigned Date" id="Assign_Date" />
+        <input type="text" placeholder="Deadline" id="Deadline" />
+        <input type="text" placeholder="Importance" id="Importance" />
+        <div class="assign-buttons">
+          <button id="Assign" onclick="create_task()">Assign</button>
+        </div>
+      </div>
+
+      <button class="compose-button">Compose</button>
+    </div>
+  </div>
+</body>
+<script>
+  function create_task(){
+   const title = document.getElementById("Title").value;
+   const from = document.getElementById("from").value;
+   const to = document.getElementById("to").value;
+   const Assign_date = document.getElementById("Assign_Date").value;
+   const deadline = document.getElementById("Deadline").value;
+   const Importance = document.getElementById("Importance").value;
+   const data = {tasktitle:title,from:from,to:to,assign_date:Assign_date,deadline:deadline,importance:Importance};
+   fetch("/api/taskmgmt/insert_task",{
+    method:"POST",
+    headers: {
+        'Content-Type': 'application/json', 
+      },
+      body:JSON.stringify(data)
+   }).then(() => console.log("Task Inserted Sucessfuly"))
+   .catch((err)=>console.log(err))
+  }
+  //Task Assigned to Yourself
+  let my_taskdiv =document.getElementById("your_tasks");
+  my_taskdiv.innerHTML = "<h1>Your Tasks</h1>"
+  fetch("/api/taskmgmt/tasks")
+  .then((res) => res.json() )
+  .then(data => {
+       data.forEach(task => {
+        my_taskdiv.innerHTML+=`<button class="todo-button">${task.tasktitle}</button>`
+       })
+  }).catch((err)=> console.log(err))
+let assign_taskdiv = document.getElementById("msg_from")
+fetch("/api/taskmgmt/tasks")
+  .then((res) => res.json() )
+  .then(data => {
+       data.forEach(task => {
+        assign_taskdiv.innerHTML+=`
+        <div class="task-box">
+          <h4>${task.tasktitle}</h4>
+          <p>From: ${task.from}<br />Deadline:${task.deadline}</p>
+        </div>
+        `
+       })
+  }).catch((err)=> console.log(err))
+    </script>
+</html>

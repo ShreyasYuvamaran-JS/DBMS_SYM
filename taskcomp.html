@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compose Message</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .message-container {
+      width: 100%;
+      max-width: 900px;
+      height: 100%;
+      background-color: white;
+      border: 2px solid #138fbd;
+      border-radius: 10px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .message-container h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .input-box, .textarea-box {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #138fbd;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-style: italic;
+      color: #aaa;
+    }
+
+    .textarea-box {
+      height: 250px;
+      resize: none;
+    }
+
+    .send-button {
+      align-self: flex-end;
+      background-color: #138fbd;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 999px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="message-container">
+    <h2>Compose a Message</h2>
+    <input type="text" class="input-box" placeholder="TaskTitle">
+    <input type="text" class="input-box" placeholder="from">
+    <input type="text" class="input-box" placeholder="to">
+    <input type="text" class="input-box" placeholder="assign_date">
+    <input type="text" class="input-box" placeholder="deadline">
+    <input type="text" class="input-box" placeholder="importance">
+    <textarea class="textarea-box" placeholder="Body"></textarea>
+    <button class="send-button">Send Message</button>
+  </div>
+</body>
+</html>
