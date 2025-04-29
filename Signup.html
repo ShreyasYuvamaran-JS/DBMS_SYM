@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Management App Login</title>
+ <style>
+  .home {
+     background-color: #ffffff;
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     width: 100%;
+   }
+   
+   .home .div {
+     background-color: #ffffff;
+     width: 1280px;
+     height: 832px;
+     position: relative;
+   }
+   
+   .home .group {
+     position: absolute;
+     width: 403px;
+     height: 74px;
+     top: 249px;
+     left: 129px;
+   }
+   
+   .home .overlap-group-wrapper {
+     width: 405px;
+     height: 74px;
+   }
+   
+   .home .overlap-group {
+     position: relative;
+     width: 403px;
+     height: 74px;
+   }
+   
+   .home .rectangle {
+     width: 500px;
+     height: 53px;
+     left: 0;
+     background-color: #ffffff;
+     border-radius: 17px;
+     border: 1.5px solid;
+     border-color: #138fbd;
+     position: absolute;
+     top: 0;
+     transform: rotate(180deg);
+   }
+   
+   .home .text-wrapper {
+     position: absolute;
+     width: 228px;
+     top: 20px;
+     left: 71px;
+     transform: rotate(180deg);
+     font-family: "Inter-Bold", Helvetica;
+     font-weight: 700;
+     color: #138fbd;
+     font-size: 15px;
+     letter-spacing: 0;
+     line-height: normal;
+   }
+   
+   .home .overlap {
+     position: absolute;
+     width: 676px;
+     height: 832px;
+     top: 0;
+     left: 604px;
+   }
+   
+   .home .rectangle-2 {
+     width: 532px;
+     height: 832px;
+     left: 144px;
+     background-color: #138fbd;
+     border-radius: 23px;
+     position: absolute;
+     top: 0;
+     transform: rotate(180deg);
+   }
+   
+   .home .task-management-app {
+     position: absolute;
+     width: 605px;
+     top: 498px;
+     left: 0;
+     transform: rotate(180deg);
+     font-family: "Kavivanar-Regular", Helvetica;
+     font-weight: 400;
+     color: #ffffff;
+     font-size: 48px;
+     letter-spacing: 0;
+     line-height: normal;
+   }
+   
+   .home .overlap-wrapper {
+     position: absolute;
+     width: 448px;
+     height: 56px;
+     top: 547px;
+     left: 107px;
+   }
+   
+   .home .div-wrapper {
+     position: relative;
+     width: 446px;
+     height: 56px;
+     background-image: url(./img/image.png);
+     background-size: 100% 100%;
+   }
+   
+   .home .text-wrapper-2 {
+     top: 20px;
+     left: 342px;
+     position: absolute;
+     transform: rotate(180deg);
+     font-family: "Inter-Regular", Helvetica;
+     font-weight: 400;
+     color: #bbb0b0;
+     font-size: 14px;
+     letter-spacing: 0;
+     line-height: normal;
+   }
+   
+   .home .group-2 {
+     position: absolute;
+     width: 405px;
+     height: 53px;
+     top: 354px;
+     left: 129px;
+   }
+   
+   .home .overlap-2 {
+     position: relative;
+     width: 403px;
+     height: 53px;
+     border-radius: 17px;
+   }
+   
+   .home .rectangle-3 {
+     position: absolute;
+     width: 403px;
+     height: 53px;
+     top: 0;
+     left: 0;
+     background-color: #138fbd;
+     border-radius: 17px;
+     transform: rotate(180deg);
+   }
+   
+   .home .text-wrapper-3 {
+     position: absolute;
+     width: 47px;
+     top: 19px;
+     left: 187px;
+     transform: rotate(180deg);
+     font-family: "Inter-Bold", Helvetica;
+     font-weight: 700;
+     color: #ffffff;
+     font-size: 15px;
+     letter-spacing: 0;
+     line-height: normal;
+   }
+   
+   .home .group-3 {
+     position: absolute;
+     width: 448px;
+     height: 56px;
+     top: 462px;
+     left: 107px;
+   }
+   
+   .home .overlap-3 {
+     position: relative;
+     width: 446px;
+     height: 56px;
+     background-image: url(./img/rectangle-2.png);
+     background-size: 100% 100%;
+   }
+   
+   .home .text-wrapper-4 {
+     top: 19px;
+     left: 317px;
+     position: absolute;
+     transform: rotate(180deg);
+     font-family: "Inter-Regular", Helvetica;
+     font-weight: 400;
+     color: #bbb0b0;
+     font-size: 14px;
+     letter-spacing: 0;
+     line-height: normal;
+   }
+   /* Original CSS code should be injected here */
+   
+   .home {
+     background-color: #ffffff;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+   }
+   
+   .login-container {
+     display: flex;
+     flex-direction: row;
+     width: 100%;
+     max-width: 1280px;
+     height: 100vh;
+   }
+   
+   .login-form {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 2rem;
+   }
+   
+   .visually-hidden {
+     position: absolute;
+     width: 1px;
+     height: 1px;
+     margin: -1px;
+     padding: 0;
+     overflow: hidden;
+     clip: rect(0, 0, 0, 0);
+     white-space: nowrap;
+     border: 0;
+   }
+   
+   .form-group {
+     width: 100%;
+     margin-bottom: 1rem;
+   }
+
+   .input-field {
+     width: 500px;
+     height: 56px;
+     padding: 0 1rem;
+     border: 1.5px solid #138fbd;
+     border-radius: 17px;
+     font-family: "Inter-Regular", Helvetica;
+     font-size: 14px;
+     color: #333;
+   }
+   .input-field::placeholder {
+     color: #bbb0b0;
+   }
+   
+   .login-button {
+     width: 500px;
+     height: 53px;
+     background-color: #138fbd;
+     border: none;
+     border-radius: 17px;
+     color: #ffffff;
+     font-family: "Inter-Bold", Helvetica;
+     font-weight: 700;
+     font-size: 15px;
+     cursor: pointer;
+     margin-bottom: 1rem;
+   }
+   
+   .signup-link {
+     display: inline-block;
+     width: 500px;
+     height: 53px;
+     line-height: 53px;
+     text-align: center;
+     background-color: #ffffff;
+     border: 1.5px solid #138fbd;
+     border-radius: 17px;
+     font-family: "Inter-Bold", Helvetica;
+     font-weight: 700;
+     color: #138fbd;
+     font-size: 15px;
+     text-decoration: none;
+   }
+   
+   .app-info {
+     flex: 1;
+     background-color: #138fbd;
+     border-radius: 23px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 2rem;
+   }
+   
+   .app-title {
+     font-family: "Kavivanar-Regular", Helvetica;
+     font-weight: 400;
+     color: #ffffff;
+     font-size: 48px;
+     text-align: center;
+   }
+   
+   @media (max-width: 768px) {
+     .login-container {
+       flex-direction: column-reverse;
+       height: auto;
+     }
+   
+     .app-info {
+       border-radius: 0;
+       padding: 1rem;
+     }
+   
+     .app-title {
+       font-size: 36px;
+     }
+   }
+   @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
+
+/* Additional accessibility styles */
+:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+
+ </style>
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault(); // Prevent default form submission
+
+    const email = document.getElementById("email").value.trim();
+    const name = email.split("@")[0].replace(".", " "); // Derive name from email
+    const company = document.getElementById("Company").value.trim();
+    const position = document.getElementById("Posistion").value.trim();
+    const password = document.getElementById("password").value;
+    const cpassword = document.getElementById("cpassword").value;
+
+    if (password !== cpassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    const payload = {
+      email: email,
+      name: name,
+      Company: company,
+      Posistion: position,
+      passowrd: password, // Intentional spelling as per your format
+    };
+
+    try {
+      const response = await fetch("/api/taskmgmt/insert_user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        alert("User registered successfully!");
+        form.reset();
+      } else {
+        const data = await response.json();
+        alert(`Error: ${data.message || "Unable to register."}`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong. Please try again.");
+    }
+    window.location.href="/home"
+  });
+});
+ </script>
+  </head>
+  <body>
+    <main class="home">
+      <div class="login-container">
+        <section class="login-form">
+          <h1 class="visually-hidden">Task Management App Login</h1>
+          <form action="#" method="post">
+            <div class="form-group">
+              <label for="email" class="visually-hidden">Email</label>
+              <input type="email" id="email" name="email" class="input-field" placeholder="Enter Email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="Company" class="visually-hidden">Company</label>
+              <input
+                type="text"
+                id="Company"
+                name="Company"
+                class="input-field"
+                placeholder="Enter Company"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+               <label for="Designation" class="visually-hidden">Posistion</label>
+               <input
+                 type="text"
+                 id="Posistion"
+                 name="Posistion"
+                 class="input-field"
+                 placeholder="Enter Posistion"
+                 required
+               />
+             </div>
+
+            <div class="form-group">
+               <label for="password" class="visually-hidden">Password</label>
+               <input
+                 type="password"
+                 id="password"
+                 name="password"
+                 class="input-field"
+                 placeholder="Enter Password"
+                 required
+               />
+             </div>
+             <div class="form-group">
+               <label for="password" class="visually-hidden"> Confirm Password</label>
+               <input
+                 type="password"
+                 id="cpassword"
+                 name="cpassword"
+                 class="input-field"
+                 placeholder="Confirm Passoword"
+                 required
+               />
+             </div>
+
+            <button type="submit" class="login-button">SignUp</button>
+          </form>
+        </section>
+        <section class="app-info">
+          <h2 class="app-title">Task Management <br />App <br />for <br />professionals</h2>
+        </section>
+      </div>
+    </main>
+  </body>
