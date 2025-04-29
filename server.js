@@ -1,0 +1,11 @@
+const express = require("express")
+const App = express()
+const router = require("./routes.js")
+const Apirouter = require("./Apis.js")
+App.use(express.json())
+App.use(express.urlencoded({extended:true}))
+App.use(router)
+App.use("/api/taskmgmt",Apirouter)
+App.listen(8000,() => {
+     console.log("Server is running on port 8000")     
+})
